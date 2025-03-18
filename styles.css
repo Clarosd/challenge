@@ -1,0 +1,90 @@
+body {
+    /* Fondo rosa combinado con la imagen de fondo */
+    background: rgb(234, 103, 143) url("assets/background.png") no-repeat center center;
+    background-size: contain;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    /* Posicionar en la parte superior derecha */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 60px;
+    color: white;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+  
+  .input-section {
+    /* Ubicar la sección debajo del h1 */
+    position: absolute;
+    top: 270px;
+    left: 1000px;
+    text-align: right;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: white;
+  }
+  
+  .input-section p {
+    margin: 0 0 10px 0;
+    font-size: 35px;
+    color: white;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+  
+  /* Mover el input y el botón 90px a la izquierda */
+  .input-section input,
+  .input-section button {
+    position: relative;
+    left: -90px;
+  }
+  
+  .input-section input {
+    padding: 15px;
+    font-size: 18px;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    margin-bottom: 10px;
+    outline: none;
+  }
+  
+  .input-section button {
+    padding: 15px 25px;
+    font-size: 18px;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    background-color: #ffffff; /* Fondo blanco por defecto */
+    color: #000000;           /* Texto negro */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .input-section button:hover {
+    background-color: rgb(255, 0, 0); /* Rojo al pasar el mouse */
+    color: #ffffff;                   /* Texto blanco sobre fondo rojo */
+  }
+  
+  /* Botón Descubrir Amig@ en la parte inferior central */
+  .discover-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 25px;
+    font-size: 18px;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #000000;            /* Texto negro */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+  
+  .discover-btn:hover {
+    background-color: rgb(255, 0, 0); /* Rojo al pasar el mouse */
+    color: #ffffff;                   /* Texto blanco sobre fondo rojo */
+  }
+  
