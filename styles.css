@@ -56,7 +56,7 @@ body {
     border: 3px solid rgb(0, 0, 0);
     border-radius: 15px;
     background-color: #ffffff; /* Fondo blanco por defecto */
-    color: #000000;           /* Texto negro */
+    color: #000000;            /* Texto negro */
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
   }
@@ -65,6 +65,49 @@ body {
     background-color: rgb(255, 0, 0); /* Rojo al pasar el mouse */
     color: #ffffff;                   /* Texto blanco sobre fondo rojo */
   }
+  
+  /* Carrusel horizontal */
+  .carousel {
+    position: absolute;
+    top: 450px; /* Antes estaba en 400px, ajusta según necesites */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px;
+    width: 80%;
+  }
+  
+  
+  /* Estilos para la barra de scroll (opcional) */
+  .carousel::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .carousel::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px;
+  }
+  
+  /* Cards del carrusel */
+  .card {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 100px;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    background-color: #ffffff;
+    padding-top: 20px; /* Espacio superior opcional */
+    display: flex;
+    justify-content: center;  /* Centrado horizontal */
+    align-items: center;      /* Centrado vertical */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 20px;
+    color: rgb(234, 103, 143);
+    opacity: 0.5; /* 50% de transparencia */
+  }
+  
   
   /* Botón Descubrir Amig@ en la parte inferior central */
   .discover-btn {
@@ -76,15 +119,15 @@ body {
     font-size: 18px;
     border: 3px solid rgb(0, 0, 0);
     border-radius: 15px;
-    background-color: #ffffff; /* Fondo blanco */
-    color: #000000;            /* Texto negro */
+    background-color: #ffffff;
+    color: #000000;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     font-family: 'Comic Sans MS', cursive, sans-serif;
   }
   
   .discover-btn:hover {
-    background-color: rgb(255, 0, 0); /* Rojo al pasar el mouse */
-    color: #ffffff;                   /* Texto blanco sobre fondo rojo */
+    background-color: rgb(255, 0, 0);
+    color: #ffffff;
   }
   
