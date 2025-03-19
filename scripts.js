@@ -11,6 +11,7 @@ const inputField = document.querySelector('.input-section input');
 const addButton = document.querySelector('.add-btn');
 const carousel = document.querySelector('.carousel');
 const resetIcon = document.querySelector('.reset-icon'); // Ícono de reinicio
+const discoverBtn = document.querySelector('.discover-btn');
 
 /**
  * Función para crear una nueva card con el nombre.
@@ -22,11 +23,10 @@ function createCard(name) {
   
   // Crear un elemento 'span' para el texto del nombre
   const cardText = document.createElement('span');
-  cardText.classList.add('card-name');  // Clase específica para el estilo
+  cardText.classList.add('card-name'); // Clase específica para el estilo
   cardText.textContent = name;
   
-  // Asignar un color único de acuerdo al orden de ingreso
-  // Se usa amigos.length - 1 ya que se ha hecho push del nombre previamente
+  // Asignar un color único según el orden de ingreso
   cardText.style.color = nameColors[amigos.length - 1];
   
   // Agregar el span a la card
@@ -37,54 +37,107 @@ function createCard(name) {
 }
 
 /**
- * Función que gestiona la adición de un nombre al array y la creación de la card.
+ * Función que gestiona la adición de un nombre y la creación de la card.
  */
 function addName() {
   const name = inputField.value.trim();
 
-  // 1. Verificar que no esté vacío
+  // Verificar que no esté vacío
   if (name === "") {
     showAlert("Por favor, ingresa un nombre.");
     return;
   }
-
-  // 2. Verificar que no contenga números
+  // Verificar que no contenga números
   if (/\d/.test(name)) {
     showAlert("No se permiten números en el nombre.");
     return;
   }
-
-  // 3. Verificar que no se exceda el máximo de 6
+  // Verificar que no se exceda el máximo de 6
   if (amigos.length >= 6) {
     showAlert("Se ha alcanzado el máximo de 6 nombres.");
     return;
   }
-
-  // 4. Si todo está bien, agregar al array y crear la tarjeta
+  // Agregar el nombre y crear la tarjeta
   amigos.push(name);
   createCard(name);
-  inputField.value = ""; // Limpiar el campo de entrada
+  inputField.value = "";
 }
 
-// Evento para el botón "Añadir"
+// Eventos para añadir nombres
 addButton.addEventListener('click', addName);
-
-// Permitir añadir también al presionar Enter en el input
 inputField.addEventListener('keydown', (event) => {
-  if (event.key === "Enter") {
-    addName();
-  }
+  if (event.key === "Enter") addName();
 });
 
-// Evento para el ícono de reinicio
+// Evento para reiniciar (limpia array y carrusel)
 resetIcon.addEventListener('click', () => {
-  // Limpia el array
   amigos = [];
-  
-  // Elimina todas las tarjetas del carrusel
   carousel.innerHTML = "";
-  
+  delete carousel.dataset.duplicated; // No se necesita duplicar, se reinicia la lógica
   showAlert("Se han reiniciado los nombres.");
+});
+
+/**
+ * Función que simula una ruleta entre las cards.
+ * Resalta cada card secuencialmente con un intervalo que aumenta (simulando desaceleración)
+ * hasta detenerse en una card elegida al azar.
+ * No se generan duplicados; la selección se reinicia cada vez.
+ */
+function spinRoulette(totalDuration = 3000, initialDelay = 100, delayIncrement = 30) {
+  const cards = carousel.querySelectorAll('.card');
+  if (cards.length === 0) {
+    showAlert("No hay amigos para descubrir.");
+    return;
+  }
+  
+  // Remover cualquier clase de selección y mensaje previo
+  cards.forEach(card => {
+    card.classList.remove('highlight', 'selected-card');
+    const existingMsg = card.querySelector('.secret-message');
+    if (existingMsg) existingMsg.remove();
+  });
+  
+  // Elegir al azar la card objetivo
+  const targetIndex = Math.floor(Math.random() * cards.length);
+  
+  let currentIndex = 0;
+  let currentDelay = initialDelay;
+  let elapsedTime = 0;
+  
+  function spinStep() {
+    // Quitar highlight de todas y resaltar la card actual
+    cards.forEach(card => card.classList.remove('highlight'));
+    cards[currentIndex].classList.add('highlight');
+    
+    elapsedTime += currentDelay;
+    
+    if (elapsedTime < totalDuration) {
+      currentDelay += delayIncrement; // Aumenta el retardo (desaceleración)
+      currentIndex = (currentIndex + 1) % cards.length;
+      setTimeout(spinStep, currentDelay);
+    } else {
+      // Fin del spin: se fuerza que la card final sea la elegida al azar
+      cards.forEach(card => card.classList.remove('highlight'));
+      const chosenCard = cards[targetIndex];
+      chosenCard.classList.add('selected-card');
+      
+      // Agregar el mensaje "Tu amigo secreto es ..."
+      const existingMsg = chosenCard.querySelector('.secret-message');
+      if (existingMsg) existingMsg.remove();
+      const secretMessage = document.createElement('div');
+      secretMessage.classList.add('secret-message');
+      const name = chosenCard.querySelector('.card-name').textContent;
+      secretMessage.textContent = "Tu amigo secreto es " + name;
+      chosenCard.appendChild(secretMessage);
+    }
+  }
+  
+  spinStep();
+}
+
+// Evento único para el botón "Descubrir Amig@"
+discoverBtn.addEventListener('click', () => {
+  spinRoulette();
 });
 
 /**
@@ -99,11 +152,9 @@ function showAlert(message) {
   alertMessage.textContent = message;
   alertModal.classList.remove('hidden');
   
-  // Función para ocultar la alerta
   function hideAlert() {
     alertModal.classList.add('hidden');
     alertButton.removeEventListener('click', hideAlert);
   }
-  
   alertButton.addEventListener('click', hideAlert);
 }
