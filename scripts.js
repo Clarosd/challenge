@@ -3,9 +3,11 @@
 // Array para almacenar los nombres
 let amigos = [];
 
+// Array de colores para los nombres (máximo 6)
+const nameColors = ["#ff69b4", "#1e90ff", "#32cd32", "#ffa500", "#9400d3", "#ff1493"];
+
 // Referencias a los elementos del DOM
 const inputField = document.querySelector('.input-section input');
-// Asumiendo que el botón "Añadir" tiene una clase específica (por ejemplo, .add-btn)
 const addButton = document.querySelector('.add-btn');
 const carousel = document.querySelector('.carousel');
 const resetIcon = document.querySelector('.reset-icon'); // Ícono de reinicio
@@ -23,6 +25,10 @@ function createCard(name) {
   cardText.classList.add('card-name');  // Clase específica para el estilo
   cardText.textContent = name;
   
+  // Asignar un color único de acuerdo al orden de ingreso
+  // Se usa amigos.length - 1 ya que se ha hecho push del nombre previamente
+  cardText.style.color = nameColors[amigos.length - 1];
+  
   // Agregar el span a la card
   card.appendChild(cardText);
   
@@ -38,19 +44,19 @@ function addName() {
 
   // 1. Verificar que no esté vacío
   if (name === "") {
-    alert("Por favor, ingresa un nombre.");
+    showAlert("Por favor, ingresa un nombre.");
     return;
   }
 
   // 2. Verificar que no contenga números
   if (/\d/.test(name)) {
-    alert("No se permiten números en el nombre.");
+    showAlert("No se permiten números en el nombre.");
     return;
   }
 
   // 3. Verificar que no se exceda el máximo de 6
   if (amigos.length >= 6) {
-    alert("Se ha alcanzado el máximo de 6 nombres.");
+    showAlert("Se ha alcanzado el máximo de 6 nombres.");
     return;
   }
 
@@ -78,5 +84,26 @@ resetIcon.addEventListener('click', () => {
   // Elimina todas las tarjetas del carrusel
   carousel.innerHTML = "";
   
-  alert("Se han reiniciado los nombres.");
+  showAlert("Se han reiniciado los nombres.");
 });
+
+/**
+ * Muestra un modal de alerta personalizado.
+ * @param {string} message - El mensaje a mostrar.
+ */
+function showAlert(message) {
+  const alertModal = document.getElementById('customAlert');
+  const alertMessage = document.getElementById('customAlertMessage');
+  const alertButton = document.getElementById('customAlertButton');
+  
+  alertMessage.textContent = message;
+  alertModal.classList.remove('hidden');
+  
+  // Función para ocultar la alerta
+  function hideAlert() {
+    alertModal.classList.add('hidden');
+    alertButton.removeEventListener('click', hideAlert);
+  }
+  
+  alertButton.addEventListener('click', hideAlert);
+}
