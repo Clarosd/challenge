@@ -254,5 +254,14 @@ body {
     text-align: center;
     width: 90%;
   }
+  .watermark {
+    position: fixed;      /* Se mantiene en la misma posición aunque se haga scroll */
+    bottom: 10px;         /* Separación desde la parte inferior */
+    right: 10px;          /* Separación desde la parte derecha */
+    color: #fff;          /* Color de texto (ajusta según tu fondo) */
+    opacity: 0.7;         /* Transparencia ligera */
+    font-size: 14px;      /* Ajusta el tamaño de la fuente */
+    font-family: Arial, sans-serif; /* O la fuente que prefieras */
+  }
   
   
