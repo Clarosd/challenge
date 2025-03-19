@@ -52,41 +52,41 @@ body {
     outline: none;
   }
     
-  /* Estilos del botón Añadir */
+  /* estilos del botón Añadir */
   .add-btn {
     padding: 15px 25px;
     font-size: 18px;
     border: 3px solid rgb(0, 0, 0);
     border-radius: 15px;
-    background-color: #ffffff; /* Fondo blanco por defecto */
-    color: #000000;            /* Texto negro */
+    background-color: #ffffff; 
+    color: #000000;            
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
-    margin-left: 15px; /* Separación entre el input y el botón */
+    margin-left: 15px; 
   }
     
   .add-btn:hover {
-    background-color: rgb(255, 0, 0); /* Rojo al pasar el mouse */
-    color: #ffffff;                   /* Texto blanco sobre fondo rojo */
+    background-color: rgb(255, 0, 0); 
+    color: #ffffff;                   
   }
     
   /* Ícono de reinicio */
   .reset-icon {
-    margin-left: 15px;       /* Separación respecto al botón Añadir */
-    font-size: 24px;         /* Ajusta el tamaño del ícono */
-    color: #000;             /* Color negro */
-    cursor: pointer;         /* Manito al pasar */
-    transition: color 0.3s;  /* Efecto de transición */
+    margin-left: 15px;      
+    font-size: 24px;         
+    color: #000;            
+    cursor: pointer;         
+    transition: color 0.3s;  
   }
     
   .reset-icon:hover {
-    color: rgb(255, 0, 0);   /* Cambia a rojo al pasar el mouse */
+    color: rgb(255, 0, 0);   
   }
     
   /* Carrusel horizontal */
   .carousel {
     position: absolute;
-    top: 450px; /* Ajusta según necesites */
+    top: 450px; 
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -112,25 +112,24 @@ body {
     height: 100px;
     border: 3px solid rgb(0, 0, 0);
     border-radius: 15px;
-    background-color: rgba(255, 255, 255, 0.5); /* Fondo semitransparente */
+    background-color: rgba(255, 255, 255, 0.5); 
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     font-size: 20px;
     color: rgb(234, 103, 143);
-    /* No se usa opacity, así el texto permanece opaco */
+    
   }
   
     
   /* Estilo específico para el nombre dentro de la tarjeta */
   .card-name {
-    font-size: 28px;             /* Letras más grandes */
-    -webkit-text-stroke: 1px black; /* Contorno negro para navegadores basados en WebKit */
-    /* Puedes añadir un fallback con text-shadow si deseas */
+    font-size: 28px;             
+    -webkit-text-stroke: 1px black; 
+    
     text-shadow: 1px 1px 2px black;
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    /* Se utiliza "inherit" para que el color lo defina el estilo inline (asignado en JS) */
     color: inherit;
   }
   
@@ -164,8 +163,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-    display: flex;
+    background: rgba(0, 0, 0, 0.5); 
     align-items: center;
     justify-content: center;
     z-index: 9999;
@@ -238,7 +236,7 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     z-index: 10;
     position: relative;
-    background-color: #fff;                 /* Fondo blanco para resaltar */
+    background-color: #fff;               
   }
   
   .secret-message {
@@ -255,13 +253,13 @@ body {
     width: 90%;
   }
   .watermark {
-    position: fixed;      /* Se mantiene en la misma posición aunque se haga scroll */
-    bottom: 10px;         /* Separación desde la parte inferior */
-    right: 10px;          /* Separación desde la parte derecha */
-    color: #fff;          /* Color de texto (ajusta según tu fondo) */
-    opacity: 0.7;         /* Transparencia ligera */
-    font-size: 14px;      /* Ajusta el tamaño de la fuente */
-    font-family: Arial, sans-serif; /* O la fuente que prefieras */
+    position: fixed;      
+    bottom: 10px;         
+    right: 10px;          
+    color: #fff;          
+    opacity: 0.7;         
+    font-size: 14px;      
+    font-family: Arial, sans-serif; 
   }
   
   

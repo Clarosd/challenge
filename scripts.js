@@ -1,20 +1,20 @@
 // scripts.js
 
-// Array para almacenar los nombres
+// array para almacenar los nombres
 let amigos = [];
 
-// Array de colores para los nombres (máximo 6)
+// array de colores para los nombres (máximo 6)
 const nameColors = ["#ff69b4", "#1e90ff", "#32cd32", "#ffa500", "#9400d3", "#ff1493"];
 
-// Referencias a los elementos del DOM
+// referencias a los elementos del DOM
 const inputField = document.querySelector('.input-section input');
 const addButton = document.querySelector('.add-btn');
 const carousel = document.querySelector('.carousel');
-const resetIcon = document.querySelector('.reset-icon'); // Ícono de reinicio
+const resetIcon = document.querySelector('.reset-icon'); 
 const discoverBtn = document.querySelector('.discover-btn');
 
 /**
- * Función para crear una nueva card con el nombre.
+ * es una función para crear una nueva card con el nombre.
  * @param {string} name - El nombre que se mostrará en la tarjeta.
  */
 function createCard(name) {
