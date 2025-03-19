@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi challenger</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Incluir Font Awesome para íconos (versión de ejemplo) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
+        integrity="sha512-..." 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <h1>¡Juguemos al amigo secreto!</h1>
@@ -12,19 +16,18 @@
   <div class="input-section">
     <p>Digite el nombre de sus amig@s</p>
     <input type="text" placeholder="Nombre">
-    <button>Añadir</button>
+    <button class="add-btn">Añadir</button>
+    <!-- Ícono de reiniciar -->
+    <i class="fas fa-sync-alt reset-icon"></i>
   </div>
   
-  <!-- Carrusel horizontal con 6 cards -->
-  <div class="carousel">
-    <div class="card">Card 1</div>
-    <div class="card">Card 2</div>
-    <div class="card">Card 3</div>
-    <div class="card">Card 4</div>
-    <div class="card">Card 5</div>
-    <div class="card">Card 6</div>
-  </div>
+  <!-- Carrusel horizontal sin tarjetas estáticas -->
+  <div class="carousel"></div>
   
   <button class="discover-btn">Descubrir Amig@</button>
+  
+
+  <!-- Vinculamos el archivo JavaScript -->
+  <script src="scripts.js"></script>
 </body>
 </html>
