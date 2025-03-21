@@ -56,6 +56,6 @@ Envía un pull request para revisión.
 Licencia
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
-¡Esperamos que disfrutes usando Mi Challenger tanto como nosotros disfrutamos creándolo! Si tienes alguna pregunta o sugerencia, no dudes en abrir un issue en GitHub.
+¡Espero que disfrutes usando Mi Challenger tanto como disfruté creándolo! Si tienes alguna pregunta o sugerencia, no dudes en abrir un issue en GitHub.
 
 ¡A jugar y a descubrir quién es tu amig@ secreto!
